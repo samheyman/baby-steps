@@ -69,4 +69,48 @@ app.post('/classes', (req, res) => {
         })
 });
 
+
+app.get('/users', (req, res) => {
+    db.collection('users').get()
+        .then(data => {
+            let users=[];
+            data.forEach(doc => {
+                users.push({
+                    userId: doc.id,
+                    firstname: doc.data().firstname,
+                    lastname: doc.data().lastname,
+                    email: doc.data().email,
+                    dueDate: doc.data().dueDate,
+                    gender: doc.data().gender,
+                    createdAt: doc.data().createdAt,
+                    modifiedAt: doc.data().modifiedAt
+                });
+            });
+            return res.json(users);
+        })
+        .catch(err => console.error(err)) 
+});
+
+app.post('/users', (req, res) => {
+    const newUser = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        dueDate: req.body.dueDate,
+        gender: req.body.gender,
+        createdAt: new Date().toISOString(),
+        modifiedAt: null,
+    }
+    db.collection('users')
+        .add(newUser)
+        .then(doc => {
+            res.status(201).json({message: `User successfully saved. User id: ${doc.id}.` });
+        })
+        .catch(err => {
+            res.status(500).json({ error: "An error occured."});
+            console.error(err);
+        })
+});
+
+
 exports.api = functions.region('europe-west2').https.onRequest(app);
