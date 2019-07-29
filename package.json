@@ -1,0 +1,25 @@
+{
+  "name": "baby-steps-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dbschema.js",
+  "dependencies": {
+    "@material-ui/core": "^4.2.0",
+    "express": "^4.17.1",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samheyman/baby-steps.git"
+  },
+  "author": "Sam Heyman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samheyman/baby-steps/issues"
+  },
+  "homepage": "https://github.com/samheyman/baby-steps#readme"
+}

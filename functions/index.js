@@ -11,10 +11,11 @@ if (process.env.NODE_ENV === "development") {
 } else {
     admin.initializeApp({});
 }
+const db = admin.firestore();
 
 
 app.get('/classes', (req, res) => {
-    admin.firestore().collection('classes').get()
+    db.collection('classes').get()
         .then(data => {
             let classes=[];
             data.forEach(doc => {
@@ -57,8 +58,7 @@ app.post('/classes', (req, res) => {
         createdAt: new Date().toISOString(),
         modifiedAt: null,
     }
-    admin.firestore()
-        .collection('classes')
+    db.collection('classes')
         .add(newClass)
         .then(doc => {
             res.status(201).json({message: `Class successfully saved. Document id: ${doc.id}.` });
