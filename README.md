@@ -2,7 +2,7 @@
 
 Backend as a service system for BabySteps, an app for mums and dads who are expecting their first baby, or who have just had a baby, to help them find pregnancy and parenting related classes in their area. 
 
-![Screenshot](./screenshot.png)
+[App repo](https://github.com/samheyman/babysteps)
 
 
 ## Getting Started
